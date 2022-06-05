@@ -1,0 +1,63 @@
+\chapter{Einführung}
+\label{cha:Introduction}
+
+Dies ist ein Beispiel Kapitel, welches zeigt, wie Code mit minted und Syntax highlighting funktioniert.
+
+\section{Minted}
+
+
+\begin{longlisting}
+    \caption{Referenz zu echten file}
+    \label{csharp:apm_calc1}
+    \inputminted[firstline=7, lastline=44]{csharp}{code/program.cs}
+\end{longlisting}
+
+
+\begin{longlisting}
+    \caption{Code direkt im .tex file}
+    \label{csharp:TPLThreadLocalForEach}
+\begin{minted}{csharp}
+// <int> is the type of the source elements,
+// <long> is the type of the partition-local variable
+Parallel.ForEach<int, long>(nums, // source collection
+    () => 0, // method to initialize the partition variable (subtotal)
+    (j, loop, subtotal) => { 
+        subtotal += j; // j is the value of the current item
+        return subtotal; // value to be passed to next iteration
+    },
+    (subtotal) => Interlocked.Add(ref total, subtotal) 
+);
+\end{minted}
+\end{longlisting}
+
+\begin{longlisting}
+    \caption{Andere Sprache}
+    \label{kotlin:tryCatchAsyncWithScope}
+\begin{minted}{kotlin}
+coroutineScope {
+    try {
+        val result = coroutineScope {
+            val a = async { 
+                throw IllegalStateException()
+                5 // needed to compile
+            }
+            val b = async { 
+                delay(100)
+                5 
+            }
+
+            a.await() + b.await() // return result to the scope
+        }
+        println(result) // will not be reached
+    } catch (e:Exception) {
+        println("handled: $e") // => handled: java.lang.IllegalStateException
+    }
+}
+\end{minted}
+\end{longlisting}
+
+Aktuell wird nur Kotlin und C\# unterstützt. Um eine neue Sprache hinzuzufügen, muss in CustomListings.sty ein neues Environment zum Schluss angefügt werden.
+
+
+
+

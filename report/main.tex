@@ -1,0 +1,85 @@
+%%% File encoding: UTF-8
+%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+\documentclass[internship,german,smartquotes]{hgbthesis}
+% Valid options in [..]: 
+%    Type of work: 'diploma', 'master' (default), 'bachelor', 'internship' 
+%    Main language: 'german' (default), 'english'
+%    Turn on smart quote handling: 'smartquotes'
+%    APA bibliography style: 'apa'
+%%%-----------------------------------------------------------------------------
+
+%\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+
+\graphicspath{{images/}}  % Location of images and graphics
+\logofile{logo}           % Logo file: images/logo.pdf (no logo: \logofile{})
+\bibliography{references} % Biblatex bibliography file (references.bib)
+
+%%%-----------------------------------------------------------------------------
+% Title page entries
+%%%-----------------------------------------------------------------------------
+
+\title{Title}
+\author{xxx}
+\programname{Software engineering}
+
+%\programtype{Fachhochschul-Bachelorstudiengang} % select/edit
+\programtype{Fachhochschul-Bachelorstudiengang}
+
+\placeofstudy{Hagenberg}
+\dateofsubmission{2022}{02}{28} % {YYYY}{MM}{DD}
+
+%\advisor{FH-Prof. DI Johann Heinzelreiter } % optional
+
+%\strictlicense % restrictive license instead of Creative Commons (discouraged!)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
+
+%%%-----------------------------------------------------------------------------
+\frontmatter                                   % Front part (roman page numbers)
+%%%-----------------------------------------------------------------------------
+
+%\maketitle removed, since the cover template is mandatory
+
+%\includepdf[pages=-]{front/Titelblattvorlage_BPBericht.pdf}
+\includepdf[pages=-]{front/Titelblattvorlage_Bachelorarbeit.pdf}
+
+
+%\include{front/preface} % A preface is optional
+\include{front/abstract}		
+\include{front/kurzfassung}			
+\tableofcontents
+
+%%%-----------------------------------------------------------------------------
+\mainmatter                                    % Main part (arabic page numbers)
+%%%-----------------------------------------------------------------------------
+
+\include{chapters/introduction}
+
+%%%-----------------------------------------------------------------------------
+\appendix                                                             % Appendix 
+%%%-----------------------------------------------------------------------------
+
+
+%%%-----------------------------------------------------------------------------
+\backmatter                           % Back part (bibliography, glossary, etc.)
+%%%-----------------------------------------------------------------------------
+
+\MakeBibliography % References
+
+%%%-----------------------------------------------------------------------------
+% Special page for checking print size
+%%%-----------------------------------------------------------------------------
+
+% \include{back/printbox}
+
+%%%-----------------------------------------------------------------------------
+\end{document}
+%%%-----------------------------------------------------------------------------
